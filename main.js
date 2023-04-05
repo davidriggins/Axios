@@ -23,6 +23,14 @@ function getTodos() {
         .catch((err) => console.error(err));
 }
 
+async function getTodosAsync() {
+    const response = await axios
+        .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+        .then((res) => showOutput(res))
+        .catch((err) => console.error(err));
+    console.log(response);
+}
+
 // POST REQUEST
 function addTodo() {
     // axios({
@@ -139,6 +147,7 @@ function showOutput(res) {
 
 // Event listeners
 document.getElementById("get").addEventListener("click", getTodos);
+document.getElementById("get-async").addEventListener("click", getTodosAsync);
 document.getElementById("post").addEventListener("click", addTodo);
 document.getElementById("update").addEventListener("click", updateTodo);
 document.getElementById("delete").addEventListener("click", removeTodo);
